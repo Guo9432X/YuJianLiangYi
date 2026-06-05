@@ -1,0 +1,169 @@
+.container {
+  background-color: #f7f8fa;
+  min-height: 100vh;
+}
+
+/* 用户头部 */
+.user-section {
+  background-color: #07c160;
+  margin-top: -200rpx;
+  padding: 60rpx 90rpx;
+  display: flex;
+  align-items: center;
+  color: white;
+}
+
+.avatar {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  border: 4rpx solid rgba(255,255,255,0.3);
+  margin-right: 30rpx;
+}
+
+.nickname {
+  font-size: 36rpx;
+  font-weight: bold;
+  display: block;
+}
+
+.user-id {
+  font-size: 24rpx;
+  opacity: 0.8;
+  margin-top: 8rpx;
+  display: block;
+}
+
+/* 菜单列表 */
+.menu-list {
+  margin-top: 20rpx;
+  background-color: white;
+}
+
+.menu-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30rpx 70rpx;
+  border-bottom: 1rpx solid #f2f2f2;
+}
+
+.menu-left {
+  display: flex;
+  align-items: center;
+}
+
+.menu-text {
+  padding: 15rpx 50rpx;
+  margin-left: 20rpx;
+  font-size: 30rpx;
+  color: #333;
+}
+
+.cache-size, .version {
+  font-size: 26rpx;
+  color: #999;
+}
+
+.arrow {
+  width: 16rpx;
+  height: 16rpx;
+  border-top: 4rpx solid #ccc;
+  border-right: 4rpx solid #ccc;
+  transform: rotate(45deg);
+  margin-left: 10rpx;
+  display: inline-block;
+}
+
+/* 底部按钮 */
+.footer-btn {
+  margin-top: 60rpx;
+  padding: 0 40rpx;
+}
+
+.login-btn {
+  background-color: #07c160;
+  color: white;
+  border-radius: 44rpx;
+}
+
+.logout-btn {
+  background-color: white;
+  color: #ff4d4f;
+  border: 1rpx solid #ff4d4f;
+  border-radius: 44rpx;
+}
+/* 1. 全屏半透明黑色遮罩背景 */
+.help-modal-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 9999; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 2. 弹窗白色主体卡片（🔥 修复滑动的核心） */
+.help-modal-content {
+  width: 85%;
+  max-height: 80vh;        /* 🔥 限制整个白框最大高度为屏幕的 80%，超过这个高度就会在内部触发滚动 */
+  background-color: #ffffff;
+  border-radius: 24rpx;
+  padding: 35rpx;
+  display: flex;
+  flex-direction: column;  /* 使得标题、滚动区、按钮呈垂直弹性排列 */
+  box-sizing: border-box;
+}
+
+/* 3. 弹窗顶部标题 */
+.help-modal-title {
+  text-align: center;
+  font-size: 34rpx;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 25rpx;
+  flex-shrink: 0;          /* 防止标题在空间紧凑时被无情挤压 */
+}
+
+/* 4. 滚动区域容器 */
+.help-modal-scroll {
+  /* flex: 1; height: 0; 👈 把这两行删掉，真机上它们容易失效 */
+  
+  /* 🎯 核心修正：给真机一个明确的最高度限制 */
+  max-height: calc(80vh - 280rpx); 
+  
+  margin-bottom: 25rpx;
+  box-sizing: border-box;
+}
+
+/* 5. 图片垂直排列容器 */
+.help-image-column {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;              /* 多张图片之间的垂直间距 */
+  padding-bottom: 10rpx;   /* 底部垫一点点呼吸留白 */
+}
+
+/* 6. 单张长图样式 */
+.help-img {
+  width: 100%;             /* 宽度百分百平铺 */
+  height: auto;            /* 高度自适应 */
+  display: block;          /* 去掉图片底层默认的空白间隙 */
+  border-radius: 12rpx;    /* 微圆角 */
+}
+
+/* 7. 底部“我知道了”关闭按钮 */
+.help-modal-close {
+  width: 100% !important;
+  background-color: #07c160; 
+  color: #ffffff;
+  font-size: 30rpx;
+  font-weight: 500;
+  border-radius: 40rpx;
+  padding: 18rpx 0;
+  flex-shrink: 0;          /* 🔥 确保按钮雷打不动，永远固定在弹窗最底部，不会随着图片一起滚走 */
+}

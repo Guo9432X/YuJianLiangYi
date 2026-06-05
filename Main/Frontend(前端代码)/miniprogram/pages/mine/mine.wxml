@@ -1,0 +1,71 @@
+<view class="container">
+  <view class="user-section">
+    <image class="avatar" src="{{userInfo.avatarUrl || '/images/default-avatar.png'}}" mode="aspectFill"></image>
+    <view class="user-info">
+      <text class="nickname">{{userInfo.nickName || '游客用户'}}</text>
+      <text class="user-id">ID: {{userInfo.openid || '未登录'}}</text>
+    </view>
+  </view>
+
+  <view class="menu-list">
+    <view class="menu-item" bindtap="handleClearCache">
+      <view class="menu-left">
+        <icon type="clear" size="20" color="#888"></icon>
+        <text class="menu-text">清除本地缓存</text>
+      </view>
+      <view class="menu-right">
+        <text class="cache-size">{{cacheSize}}</text>
+        <view class="arrow"></view>
+      </view>
+    </view>
+    <view class="menu-item" bindtap="handleFeedback">
+      <view class="menu-left">
+        <icon type="info" size="20" color="#888"></icon> <text class="menu-text">反馈意见</text>
+      </view>
+      <view class="menu-right">
+        <view class="arrow"></view>
+      </view>
+    </view>
+    <view class="menu-item" bindtap="ShowHelp">
+      <view class="menu-left">
+        <icon type="info" size="20" color="#888"></icon> 
+        <text class="menu-text">使用帮助</text>
+      </view>
+      <view class="menu-right">
+        <view class="arrow"></view>
+      </view>
+    </view>
+    
+
+    <view class="menu-item">
+      <view class="menu-left">
+        <icon type="info" size="20" color="#888"></icon>
+        <text class="menu-text">版本信息</text>
+      </view>
+      <view class="menu-right">
+        <text class="version">v1.0.4</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="footer-btn">
+    <button wx:if="{{!userInfo.openid}}" class="login-btn" bindtap="toLogin">立即登录</button>
+    <button wx:else class="logout-btn" bindtap="handleLogout">退出登录</button>
+  </view>
+
+  <view wx:if="{{showHelpModal}}" class="help-modal-mask" bindtap="closeHelpModal">
+    <view class="help-modal-content" catchtap="stopClose">
+      <view class="help-modal-title">使用帮助</view>
+
+      <scroll-view scroll-y class="help-modal-scroll" enhanced="{{true}}" show-scrollbar="{{true}}">
+        <view class="help-image-column">
+          <image src="cloud://corn-diseases-d5gjfzoat0f031328.636f-corn-diseases-d5gjfzoat0f031328-1420556919/helps/step1.png" class="help-img" mode="widthFix"></image>
+          <image src="cloud://corn-diseases-d5gjfzoat0f031328.636f-corn-diseases-d5gjfzoat0f031328-1420556919/helps/step2.png" class="help-img" mode="widthFix"></image>
+          <image src="cloud://corn-diseases-d5gjfzoat0f031328.636f-corn-diseases-d5gjfzoat0f031328-1420556919/helps/step3.png" class="help-img" mode="widthFix"></image>
+        </view>
+      </scroll-view>
+
+      <button class="help-modal-close" bindtap="closeHelpModal">我知道了</button>
+    </view>
+  </view>
+</view>
