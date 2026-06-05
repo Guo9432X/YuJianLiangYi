@@ -1,0 +1,14 @@
+后端代码目录结构说明：
+.
+├── app.py                         # Flask 主入口，定义 API 路由（检测、健康检查等）
+├── requirements                   # Python 依赖包列表
+├── Dockerfile                     # Docker 镜像构建配置
+├── .dockerignore                  # Docker 构建时的附加文件
+├── best.pt                        # YOLOv8 模型权重文件
+├── dip_enhance.py                 # 数字图像自适应增强（光照补偿、CLAHE、锐化）
+├── denoise.py                     # 图像去噪辅助函数
+├── resize_normalize.py            # 图像尺寸调整与归一化（供 YOLO 输入）
+├── agent_post_processor.py        # ReAct 单智能体检测优化后处理器（置信度校准、小目标补偿）
+├── env_service.py                 # 环境信息获取（高德逆地理编码、Visual Crossing 天气）
+├── suggestion_builder.py          # 大模型提示词组装 + 本地降级模板管理
+└── utils.py                       # 通用工具函数（日志、参数验证、异常处理等）
