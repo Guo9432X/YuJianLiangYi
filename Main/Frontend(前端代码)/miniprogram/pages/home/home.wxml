@@ -1,0 +1,109 @@
+<!--pages/home/home.wxml-->
+<view class="page">
+  <!-- 🔥 背景图（写在 wxml 里，真机永远正常） -->
+  <view class="bg-container">
+    <swiper class="bg-swiper" autoplay circular interval="4000" duration="800">
+      <swiper-item>
+        <image src="https://img95.699pic.com/photo/60091/0307.jpg_wh860.jpg" class="bg-image"></image>
+      </swiper-item>
+      <swiper-item>
+        <image src="https://img95.699pic.com/photo/60034/3006.jpg_wh860.jpg" class="bg-image"></image>
+      </swiper-item>
+      <swiper-item>
+        <image src="https://img95.699pic.com/photo/60030/8173.jpg_wh860.jpg" class="bg-image"></image>
+      </swiper-item>
+    </swiper>
+    <!-- 半透明蒙版不变 -->
+    <view class="bg-mask"></view>
+  </view>
+
+  <!-- 主容器 -->
+  <view class="container">
+    <view class="art-text-css">玉见良医</view>
+    <!-- 标题 -->
+    <view class="header">
+      <text class="title">拍摄玉米叶片病害，简单“把脉”</text>
+      <text class="subtitle">保持通风和光照，有助于减少病害滋生</text>
+    </view>
+
+    <!-- 上传卡片 -->
+    <view class="upload-card">
+      <image wx:if="{{imgUrl}}" src="{{imgUrl}}" mode="widthFix" class="preview-img"></image>
+
+      <button wx:else class="upload-btn" bindtap="chooseImage">
+        <image src="/images/upload1.png"></image>
+        <text>拍照识别</text>
+        <text class="tip">点击上传，AI模型自动识别</text>
+      </button>
+
+      <view class="picker-group">
+        <view class="picker-item">
+          <text class="label">图像增强</text>
+          <picker bindchange="bindTypeChange" value="{{typeIndex}}" range="{{typeArray}}">
+            <view class="picker-text">{{typeArray[typeIndex]}}</view>
+          </picker>
+        </view>
+
+        <view class="picker-item">
+          <text class="label">启智模式</text>
+          <picker bindchange="bindLevelChange" value="{{levelIndex}}" range="{{levelArray}}">
+            <view class="picker-text">{{levelArray[levelIndex]}}</view>
+          </picker>
+        </view>
+        <view class="picker-item">
+          <text class="label">位置信息</text>
+          <view class="picker-row">
+            <text class="location-txt">{{locationText}}</text>
+            <view class="location-btn" bindtap="getLocation">获取</view>
+          </view>
+        </view>
+      </view>
+      <!-- 🔥 新增：“其他信息”选择栏与动态文本框 -->
+      <view class="picker-group extra-group">
+        <view class="picker-item">
+          <text class="label">其他信息</text>
+          <picker bindchange="bindExtraChange" value="{{extraIndex}}" range="{{extraArray}}">
+            <view class="picker-text">{{extraArray[extraIndex]}}</view>
+          </picker>
+        </view>
+
+        <!-- 根据 extraIndex 的值动态显示/隐藏文本框（0对应"是"） -->
+        <block wx:if="{{extraIndex === 0}}">
+          <view class="input-item">
+            <view class="input-title">土壤信息补充</view>
+            <textarea class="extra-textarea" placeholder="输入与种植土壤有关信息" value="{{extraInputSoil}}" bindinput="bindSoilInput" maxlength="200" />
+          </view>
+
+          <view class="input-item" style="margin-top: 20rpx;">
+            <view class="input-title">种植密度信息补充</view>
+            <textarea class="extra-textarea" placeholder="请输入玉米种植密度相关信息" value="{{extraInputPlant}}" bindinput="bindPlantInput" maxlength="200" />
+          </view>
+        </block>
+      </view>
+    </view>
+
+    <!-- 统计卡片 -->
+    <view class="stats-card">
+      <view class="stat-item">
+        <text class="num">准确</text>
+        <text class="desc">检测准确率</text>
+      </view>
+      <view class="divider"></view>
+      <view class="stat-item">
+        <text class="num">稳定</text>
+        <text class="desc">检测结果</text>
+      </view>
+      <view class="divider"></view>
+      <view class="stat-item">
+        <text class="num">高效</text>
+        <text class="desc">识别响应</text>
+      </view>
+    </view>
+
+    <!-- 按钮 -->
+    <view class="btn-group">
+      <button class="func-btn submit-btn" bindtap="submitData">提交识别</button>
+      <button class="func-btn reset-btn" bindtap="resetPage">重新上传</button>
+    </view>
+  </view>
+</view>

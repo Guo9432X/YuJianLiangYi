@@ -1,0 +1,262 @@
+/* pages/home/home.wxss */
+.art-text-css {
+  font-size: 60rpx;
+  font-weight: bold;
+  text-align: center;
+  padding: 0 0 20rpx;
+  
+  /* 炫酷的渐变色 */
+  background: linear-gradient(to bottom, #ffffff, #a8ff78); 
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  
+  /* 加上一点发光阴影，让它在背景上更跳跃 */
+  text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  
+  letter-spacing: 4rpx; /* 字间距 */
+  font-style: normal;   /* 斜体增加动感 */
+}
+.page {
+  min-height: 100vh;
+  position: relative;
+}
+
+/* ========== 背景图 WXML 版本（真机永不消失） ========== */
+
+.bg-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  overflow: hidden;
+}
+.bg-swiper {
+  width: 100%;
+  height: 100%;
+}
+/* 背景图铺满 */
+.bg-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 蒙版不变 */
+.bg-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 3;
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  padding: 60rpx 30rpx 120rpx;
+}
+
+/* 顶部标题 */
+.header {
+  margin-bottom: 40rpx;
+  color: #fff;
+}
+.title {
+  display: block;
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #fff;
+  line-height: 1.4;
+  text-align: center;
+}
+.subtitle {
+  display: block;
+  font-size: 30rpx;
+  color: #eee;
+  margin-top: 20rpx;
+  text-align: center;
+}
+
+/* 上传卡片 */
+.upload-card {
+  background: #fff;
+  border-radius: 24rpx;
+  padding: 40rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.05);
+  margin-bottom: 30rpx;
+}
+
+/* 上传按钮 */
+.upload-btn {
+  width: 100%;
+  background: linear-gradient(to right, #07c160, #04ad54);
+  border-radius: 20rpx;
+  padding: 60rpx 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+  border: none;
+  margin: 0 0 40rpx;
+}
+.upload-btn image {
+  width: 80rpx;
+  height: 80rpx;
+  margin-bottom: 20rpx;
+}
+.upload-btn text:nth-child(2) {
+  font-size: 36rpx;
+  font-weight: bold;
+  margin-bottom: 10rpx;
+}
+.upload-btn .tip {
+  font-size: 26rpx;
+  opacity: 0.9;
+}
+
+/* 已上传预览图 */
+.preview-img {
+  width: 100%;
+  border-radius: 16rpx;
+  margin-bottom: 40rpx;
+}
+
+/* 选择栏 */
+.picker-group {
+  margin-bottom: 20rpx;
+}
+.picker-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24rpx 0;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+.picker-item:last-child {
+  border-bottom: none;
+}
+.label {
+  font-size: 30rpx;
+  color: #333;
+}
+.picker-text {
+  font-size: 30rpx;
+  color: #666;
+  padding: 10rpx 20rpx;
+  background: #f5f9f7;
+  border-radius: 12rpx;
+}
+
+/* 数据统计卡片 */
+.stats-card {
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 40rpx;
+  display: flex;
+  justify-content: space-around;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.05);
+  margin-bottom: 40rpx;
+}
+.stat-item {
+  text-align: center;
+}
+.num {
+  display: block;
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #07c160;
+  margin-bottom: 10rpx;
+}
+.desc {
+  font-size: 26rpx;
+  color: #666;
+  padding: 26rpx;
+}
+.divider {
+  width: 1rpx;
+  height: 60rpx;
+  background: #eee;
+}
+
+/* 底部按钮组 */
+.btn-group {
+  display: flex;
+  justify-content: space-between;
+  gap: 20rpx;
+}
+.func-btn {
+  flex: 1;
+  height: 88rpx;
+  border-radius: 16rpx;
+  font-size: 30rpx;
+  border: none;
+}
+.submit-btn {
+  background: #07c160;
+  color: #fff;
+}
+.reset-btn {
+  background: #f5f5f5;
+  color: #666;
+}
+
+/* 位置按钮样式（最终极小版） */
+.picker-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.location-txt {
+  font-size: 28rpx;
+  color: #333;
+  margin-right: 12rpx;
+}
+.location-btn {
+  font-size: 22rpx;
+  padding: 6rpx 12rpx;
+  background: #07c160;
+  color: #fff;
+  border-radius: 8rpx;
+  line-height: 1.1;
+}
+/* 其他信息模块外边距 */
+.extra-group {
+  margin-top: 20rpx;
+  border-top: 1rpx solid #f0f0f0;
+  padding-top: 10rpx;
+}
+
+/* 文本框的基础样式 */
+.extra-textarea {
+  width: 100%;
+  height: 160rpx;
+  background-color: #f7f8fa;
+  border-radius: 12rpx;
+  padding: 20rpx;
+  box-sizing: border-box;
+  font-size: 28rpx;
+  color: #333;
+  margin-top: 16rpx;
+  border: 1rpx solid #eef0f2;
+}
+
+/* 简单的渐现动画（可选） */
+.animate-fade {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10rpx);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
