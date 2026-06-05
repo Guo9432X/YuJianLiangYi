@@ -1,0 +1,39 @@
+<!--index.wxml-->
+<view class="container">
+  <!-- 轮播背景图 -->
+  <view class="bg-container">
+    <swiper class="bg-swiper" autoplay circular interval="4000" duration="800">
+      <swiper-item>
+        <image src="https://img95.699pic.com/photo/60091/0307.jpg_wh860.jpg" class="bg-image"></image>
+      </swiper-item>
+      <swiper-item>
+        <image src="https://img95.699pic.com/photo/60034/3006.jpg_wh860.jpg" class="bg-image"></image>
+      </swiper-item>
+      <swiper-item>
+        <image src="https://img95.699pic.com/photo/60030/8173.jpg_wh860.jpg" class="bg-image"></image>
+      </swiper-item>
+    </swiper>
+    <!-- 半透明蒙版不变 -->
+    <view class="bg-mask"></view>
+  </view>
+  <view class="art-text-css">玉见良医</view>
+
+  <view class="userinfo">
+    <!-- 自定义头像：点击更换 -->
+    <button open-type="chooseAvatar" bindchooseavatar="onChooseAvatar" class="avatar-btn">
+      <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+    </button>
+
+    <!-- 自定义昵称输入框 -->
+    <input class="userinfo-nickname" type="nickname" placeholder="请输入昵称" value="{{userInfo.nickName}}" bindinput="onInputChange" />
+  </view>
+
+  <view class="usermotto">
+    <text class="user-motto">{{motto}}</text>
+  </view>
+
+  <!-- 登录按钮 -->
+  <view class="login-box">
+    <button class="login-btn" bindtap="wxLogin">微信授权登录</button>
+  </view>
+</view>
