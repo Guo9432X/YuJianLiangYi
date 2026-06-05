@@ -1,0 +1,33 @@
+# 云开发 quickstart
+
+这是云开发的快速启动指引，其中演示了如何上手使用云开发的三大基础能力：
+
+- 数据库：一个既可在小程序前端操作，也能在云函数中读写的 JSON 文档型数据库
+- 文件存储：在小程序前端直接上传/下载云端文件，在云开发控制台可视化管理
+- 云函数：在云端运行的代码，微信私有协议天然鉴权，开发者只需编写业务逻辑代码
+
+## 参考文档
+
+- [云开发文档](https://developers.weixin.qq.com/miniprogram/dev/wxcloud/basis/getting-started.html)
+
+## 前端页面结构
+  
+项目根目录/  
+├── project.config                 # 项目配置文件（开发者工具配置）  
+├── project.private.config         # 私有项目配置（本地开发环境，不提交）  
+├── README                         # 项目说明文档（Markdown）  
+├── uploadCloudFunction            # 上传云函数的脚本（Shell）  
+├── miniprogram/                   # 小程序前端代码主目录  
+│   ├── images/                    # 静态图片资源目录  
+│   ├── app.json                   # 小程序全局配置（页面路径、窗口样式等）  
+│   ├── app.js                     # 小程序入口逻辑（生命周期、全局数据）  
+│   ├── app.wxss                   # 全局样式表  
+│   ├── project.config             # 小程序级别的项目配置（可能与根目录重复）  
+│   ├── project.private.config     # 小程序级别的私有配置  
+│   ├── envList.js                 # 环境变量列表（如云开发环境ID）  
+│   ├── sitemap.json               # 小程序站点地图配置（索引规则）  
+│   ├── pages/                     # 页面文件夹  
+│   ├── utils/                     # 工具函数库  
+│   └── components/                # 自定义组件目录  
+└── cloudfunctions/                # 云函数目录  
+    └── quickstartFunctions/       # 快速开始示例云函数（仅一个子文件夹）
