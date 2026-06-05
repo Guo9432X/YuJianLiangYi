@@ -26,26 +26,38 @@
 
 ```
 yujian-liangyi/
-├── backend/
-│   ├── app.py
-│   ├── best.pt
-│   ├── dip_enhance.py
-│   ├── denoise.py
-│   ├── resize_normalize.py
-│   ├── agent_post_processor.py
-│   ├── env_service.py
-│   ├── suggestion_builder.py
-│   ├── utils/
-│   └── requirements.txt
-├── miniprogram/
-│   ├── app.js / app.json / app.wxss
-│   ├── pages/ (detect, record, user)
-│   ├── utils/
-│   ├── images/
-│   └── components/
-├── cloudfunctions/
-│   └── quickstartFunctions/
-└── docs/
+├── README.md                        # 项目总体说明文档
+├── backend/                         # 后端代码目录
+│   ├── app.py                       # Flask主入口
+│   ├── requirements.txt             # Python依赖
+│   ├── Dockerfile                   # Docker构建文件
+│   ├── .dockerignore
+│   ├── best.pt                      # YOLOv8模型权重
+│   ├── dip_enhance.py               # DIP图像增强
+│   ├── denoise.py                   # 去噪辅助
+│   ├── resize_normalize.py          # 图像归一化
+│   ├── agent_post_processor.py      # ReAct智能体后处理
+│   ├── env_service.py               # 环境信息（天气/位置）
+│   ├── suggestion_builder.py        # 大模型提示词与降级模板
+│   ├── utils/                       # 通用工具函数
+│   └── ...
+├── miniprogram/                     # 微信小程序前端代码
+│   ├── app.js                       # 小程序入口逻辑
+│   ├── app.json                     # 全局配置
+│   ├── app.wxss                     # 全局样式
+│   ├── project.config.json          # 项目配置
+│   ├── sitemap.json                 # 站点地图
+│   ├── envList.js                   # 云开发环境ID列表
+│   ├── images/                      # 静态图片资源
+│   ├── pages/                       # 页面目录
+│   │   ├── index/
+│   │   ├── log/
+│   │   ├── mine/
+│   │   └── ...
+│   ├── utils/                       # 前端工具函数
+│   └── components/                  # 自定义组件
+└── cloudfunctions/                  # 微信云函数
+    └── quickstartFunctions/         # 示例云函数（登录、数据库操作等）
 ```
 
 ## 核心模块与负责人
