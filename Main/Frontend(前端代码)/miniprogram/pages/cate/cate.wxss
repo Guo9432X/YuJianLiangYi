@@ -1,0 +1,236 @@
+/* pages/record/record.wxss */
+
+.container {
+  background: #f5f7fa;
+  min-height: 100vh;
+  padding-bottom: 120rpx;
+}
+
+/* 顶部标签 */
+.tab-box {
+  display: flex;
+  background: #fff;
+  margin-top: -200rpx;
+  /* margin-top 根据你的布局需求调整 */
+}
+
+.tab-item {
+  flex: 1;
+  text-align: center;
+  padding: 24rpx 280rpx;
+  /* 👈 移除过大的左右 padding，防止挤压文字 */
+  font-size: 30rpx;
+  color: #666;
+  position: relative;
+}
+
+.tab-item.active {
+  color: #07c160;
+  font-weight: bold;
+}
+
+.tab-item.active::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60rpx;
+  height: 6rpx;
+  background: #07c160;
+  border-radius: 3rpx;
+}
+
+/* 内容区域优化：缩小外层左右边距，让卡片有更多空间 */
+.content {
+  padding: 20rpx 10rpx;
+  /* 👈 左右 padding 从 20 减小到 10 */
+  min-height: calc(100vh - 300rpx);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  box-sizing: border-box;
+}
+
+.record-list {
+  width: 100%;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* 确保卡片在缩减边距后依然水平居中 */
+}
+
+/* 🔥 record-card 修改点：加宽并优化比例 */
+.record-card {
+  background: #fff;
+  border-radius: 20rpx;
+  /* 1. 增加纵向高度，缩小左右内边距让内容更靠边 */
+  padding: 32rpx 80rpx; 
+  margin: 0 auto 24rpx;
+  
+  display: flex;
+  align-items: center; /* 垂直居中 */
+  box-shadow: 0 4rpx 20rpx rgba(0,0,0,0.06);
+  
+  width: 100% !important; 
+  box-sizing: border-box;
+}
+
+/* 2. 图片：极致靠左 */
+.card-img {
+  width: 170rpx;         /* 增大尺寸，更饱满 */
+  height: 170rpx;
+  border-radius: 16rpx;
+  margin-right: 28rpx;   /* 与文字的间距 */
+  margin-left: -50rpx;        /* 确保左边没留缝 */
+  flex-shrink: 0;        /* 禁止被挤压 */
+  object-fit: cover;
+}
+
+/* 3. 文字区域：充当弹簧撑开左右 */
+.card-info {
+  flex: 1;               /* 👈 关键：占满中间所有余量，把删除按钮推向最右边 */
+  display: flex;
+  flex-direction: column;
+   /* 文字均匀上下分布 */
+  height: 170rpx;        /* 高度与图片一致，垂直方向更美观 */
+  overflow: hidden;
+  font-size: 28rpx;      /* 稍微调大字号 */
+  line-height: 1.5;
+  color: #333;
+}
+
+/* 4. 删除按钮：极致靠右 */
+.delete-btn {
+  background: #ff4d4f;
+  color: #fff;
+  font-size: 24rpx;
+  padding: 12rpx 24rpx;
+  border-radius: 12rpx;
+  margin-left: 150rpx;    /* 离文字留点距离 */
+  margin-right: -50rpx;       /* 确保右边没留缝 */
+  flex-shrink: 0;        /* 禁止缩水 */
+  align-self: center;    /* 在卡片中垂直居中 */
+}
+
+/* 时间文字微调 */
+.time {
+  color: #999;
+  font-size: 24rpx;
+  margin-top: auto;      /* 自动推到文字最下方 */
+}
+
+/* --- 弹窗样式（保持你满意的版本） --- */
+
+.modal-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.modal-content {
+  width: 96%;
+  /* 弹窗也保持 96% 的一致宽度 */
+  max-height: 85vh;
+  background: #fff;
+  border-radius: 32rpx;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 10rpx 50rpx rgba(0, 0, 0, 0.2);
+}
+
+/* 弹窗其他内部样式保持不变... */
+.modal-scroll-body {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.modal-img {
+  width: 100%;
+  display: block;
+}
+
+.modal-info-grid {
+  padding: 30rpx 40rpx;
+  display: flex;
+  flex-wrap: wrap;
+  border-bottom: 1rpx solid #eee;
+}
+
+.info-item {
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  font-size: 28rpx;
+  line-height: 2.2;
+  color: #333;
+  flex-direction: row;    /* 水平排列 */
+}
+
+.score-text {
+  color: #07c160;
+  font-weight: bold;
+  font-size: 30rpx;
+}
+
+.suggestion-box {
+  padding: 30rpx 40rpx;
+  background: #f9f9f9;
+}
+
+.suggestion-title {
+  font-size: 30rpx;
+  font-weight: bold;
+  margin-bottom: 16rpx;
+  display: flex;
+  align-items: center;
+}
+
+.suggestion-title::before {
+  content: "";
+  width: 8rpx;
+  height: 30rpx;
+  background: #07c160;
+  margin-right: 12rpx;
+  border-radius: 4rpx;
+}
+
+.suggestion-content {
+  font-size: 28rpx;
+  color: #444;
+  line-height: 1.8;
+  text-align: justify;
+}
+
+.modal-close {
+  margin: 20rpx auto 40rpx;
+  width: 240rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  padding: 0;
+  background: #07c160;
+  color: #fff;
+  border-radius: 40rpx;
+  text-align: center;
+  flex-shrink: 0;
+}
+.suggestion-text {
+  font-size: 28rpx;
+  color: #333;
+  line-height: 1.6; /* 增加行高，让长段落不压抑 */
+  word-break: break-all; /* 防止长数字或英文撑破布局 */
+  white-space: pre-wrap; /* 确保即使后端传回的是空格也能保留 */
+}
+.label {
+  flex-shrink: 0;       /* 👈 保证“检测结果：”这几个字不被挤压 */
+  margin-right: 10rpx;  /* 👈 标签和结果之间留个小缝隙 */
+}

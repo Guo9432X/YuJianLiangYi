@@ -1,0 +1,65 @@
+<view class="container">
+  <view class="tab-box">
+
+    <view class="tab-item {{currentTab==1?'active':''}}" bindtap="switchTab" data-tab="1">
+      云端上传记录
+    </view>
+  </view>
+
+
+  <view wx:if="{{currentTab==1}}" class="content">
+    <view class="record-list">
+      <block wx:for="{{cloudRecords}}" wx:key="_id">
+        <view class="record-card" bindtap="openModal" data-record="{{item}}">
+          <image src="{{item.imgUrl}}" class="card-img" mode="aspectFill"></image>
+          <view class="card-info">
+            <view>图像增强：{{item.result[0].diseaseName}}</view>
+            <view>启智模式：{{item.result[0].level}}</view>
+            <view>检测地点：{{item.location.city || '未知'}}</view>
+            <view class="time">{{item.time}}</view>
+          </view>
+          <view class="delete-btn" catchtap="deleteCloudRecord" data-id="{{item._id}}" data-index="{{index}}">
+            删除
+          </view>
+        </view>
+      </block>
+      <view wx:if="{{cloudRecords.length===0 && !isLoading}}" class="empty">暂无云端记录</view>
+      <view wx:if="{{isLoading}}" class="empty">正在同步云端数据...</view>
+    </view>
+  </view>
+</view>
+<view wx:if="{{showModal}}" class="modal-mask" bindtap="closeModal">
+  <view class="modal-content" catchtap="stopClose">
+    <scroll-view scroll-y class="modal-scroll-body">
+      <view class="modal-img-wrap">
+        <image src="{{currentRecord.imgUrl}}" class="modal-img" mode="widthFix"></image>
+      </view>
+
+      <view class="modal-info-grid">
+        <view class="info-item"><text class="label">检测结果：</text>
+          <text wx:if="{{currentRecord.score !== undefined}}" style="color: {{ currentRecord.score === 100 ? '#07c160' : '#ff4444' }}; font-weight: bold;">{{ currentRecord.score === 100 ? '未发现病害' : '存在病害' }}</text>
+        </view>
+        <view class="info-item"><text class="label">图像增强：</text>{{currentRecord.result[0].diseaseName}}</view>
+        <view class="info-item"><text class="label">启智模式：</text>{{currentRecord.result[0].level}}</view>
+        <view class="info-item"><text class="label">检测地点：</text>
+          <text>{{ (currentRecord.location.province || currentRecord.location.city || currentRecord.location.district) ? (currentRecord.location.province + currentRecord.location.city + currentRecord.location.district) : '未知' }}</text>
+        </view>
+        <view class="info-item"><text class="label">记录时间：</text>{{currentRecord.time}}</view>
+      </view>
+      <view class="suggestion-box">
+        <view class="suggestion-title">防治建议</view>
+        <view class="suggestion-content">
+          <block wx:if="{{isDetailLoading}}">正在深度解析中...</block>
+          <block wx:else>
+            <text class="suggestion-text" user-select="true">{{currentRecord.suggestion}}</text>
+          </block>
+        </view>
+      </view>
+    </scroll-view>
+    
+    <canvas type="2d" id="shareCanvas" style="position: absolute; left: -9999rpx; top: -9999rpx;"></canvas>
+<button class="modal-close" bindtap="drawAndSaveImage">分享为图片</button>
+
+    <button class="modal-close" bindtap="closeModal">返回</button>
+  </view>
+</view>
